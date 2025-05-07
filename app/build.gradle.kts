@@ -57,12 +57,17 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    // Gson
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    // Carga de imagenes
     implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    // Mejora gestion de solicitudes de red para cargar imagenes
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
 
     val nav_version = "2.8.9"
 
+    // Navegacion en android
     implementation("androidx.navigation:navigation-compose:$nav_version")
 }
