@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.alonsopabloanimalsapp.components.ImageCard
+import com.example.alonsopabloanimalsapp.components.EnvironmentCard
 import com.example.alonsopabloanimalsapp.models.Environment
 import com.example.alonsopabloanimalsapp.services.AnimalService
 import kotlinx.coroutines.launch
@@ -105,7 +105,7 @@ fun EnvironmentListScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 environments.forEach { environment ->
-                    ImageCard(
+                    EnvironmentCard(
                         imageUrl = environment.image,
                         name = environment.name
                     )
