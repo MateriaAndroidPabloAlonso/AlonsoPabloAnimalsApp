@@ -39,7 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.alonsopabloanimalsapp.components.ImageCard
+import com.example.alonsopabloanimalsapp.components.AnimalCard
 import com.example.alonsopabloanimalsapp.models.Animal
 import com.example.alonsopabloanimalsapp.services.AnimalService
 import com.example.alonsopabloanimalsapp.ui.theme.AlonsoPabloAnimalsAppTheme
@@ -146,7 +146,7 @@ fun AnimalListScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 animals.forEach { animal ->
-                    ImageCard(
+                    AnimalCard(
                         imageUrl = animal.image,
                         name = animal.name,
                     )

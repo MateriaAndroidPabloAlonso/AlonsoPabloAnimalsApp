@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 
 @Composable
-fun ImageCard(
+fun AnimalCard(
     imageUrl: String,
     name: String
 ) {
