@@ -155,10 +155,11 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         ) {
-                            val environmentId = it.arguments?.getString("id") ?: ""
+                            val environmentId = it.arguments?.getString("environmentId") ?: "Id incorrecto"
                             EnvironmentDetailScreen(
                                 innerPadding = innerPadding,
-                                environmentId = environmentId
+                                environmentId = environmentId,
+                                navController = navController
                             )
                         }
                     }
