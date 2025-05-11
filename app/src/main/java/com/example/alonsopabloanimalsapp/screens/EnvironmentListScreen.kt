@@ -106,9 +106,11 @@ fun EnvironmentListScreen(
             ) {
                 environments.forEach { environment ->
                     EnvironmentCard(
-                        imageUrl = environment.image,
-                        name = environment.name
-                    )
+                        environment = environment
+                    ) { environmentRegresado ->
+                        Log.i("AmbientePresionado", environmentRegresado.id.toString())
+                        navController.navigate("environment-list/${environmentRegresado.id}")
+                    }
                     Spacer(modifier = Modifier.height(10.dp))
                 }
             }

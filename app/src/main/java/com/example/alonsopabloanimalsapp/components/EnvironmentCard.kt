@@ -1,5 +1,6 @@
 package com.example.alonsopabloanimalsapp.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,27 +15,31 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.example.alonsopabloanimalsapp.models.Environment
 
 @Composable
 fun EnvironmentCard(
-    imageUrl : String,
-    name : String
+    environment : Environment,
+    onClick : (Environment) -> Unit = {}
 ) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(vertical = 8.dp)
+            .clickable {
+                onClick(environment)
+            }
     ) {
         AsyncImage(
-            model = imageUrl,
-            contentDescription = name,
+            model = environment.image,
+            contentDescription = environment.name,
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape),
             contentScale = ContentScale.Crop
         )
         Text(
-            text = name,
+            text = environment.name,
             color = Color.White,
             style = MaterialTheme.typography.titleLarge
         )

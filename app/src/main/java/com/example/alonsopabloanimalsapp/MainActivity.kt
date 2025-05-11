@@ -35,10 +35,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.alonsopabloanimalsapp.screens.AnimalListScreen
+import com.example.alonsopabloanimalsapp.screens.EnvironmentDetailScreen
 import com.example.alonsopabloanimalsapp.screens.EnvironmentListScreen
 import com.example.alonsopabloanimalsapp.ui.theme.AlonsoPabloAnimalsAppTheme
 
@@ -141,6 +144,21 @@ class MainActivity : ComponentActivity() {
                         composable(route = "environment-list") {
                             EnvironmentListScreen(
                                 innerPadding = innerPadding, navController = navController
+                            )
+                        }
+                        composable(
+                            route = "environment-list/{environmentId}",
+                            arguments = listOf(
+                                navArgument("environmentId") {
+                                    type = NavType.StringType
+                                    nullable = false
+                                }
+                            )
+                        ) {
+                            val environmentId = it.arguments?.getString("id") ?: ""
+                            EnvironmentDetailScreen(
+                                innerPadding = innerPadding,
+                                environmentId = environmentId
                             )
                         }
                     }
