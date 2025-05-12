@@ -36,6 +36,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
+import com.example.alonsopabloanimalsapp.components.AnimalCard
+import com.example.alonsopabloanimalsapp.models.Animal
 import com.example.alonsopabloanimalsapp.models.Environment
 import com.example.alonsopabloanimalsapp.services.AnimalService
 import kotlinx.coroutines.launch
@@ -53,8 +55,11 @@ fun EnvironmentDetailScreen(
     var environment by remember {
         mutableStateOf<Environment?>(null)
     }
+    var animalsEnvironment by remember {
+        mutableStateOf(listOf<Animal>())
+    }
     var isLoading by remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
 
     LaunchedEffect(key1 = true) {
@@ -66,11 +71,13 @@ fun EnvironmentDetailScreen(
                     .build()
                 val animalService = retrofitBuilder.create(AnimalService::class.java)
                 environment = animalService.getEnvironmentById(environmentId)
-                isLoading = false
+                animalsEnvironment = animalService.getAnimalByEnvironmentId(environmentId)
                 Log.i("Environment Detail Screen", environment.toString())
             }
             catch (e: Exception) {
                 Log.e("ERROR", e.toString())
+            } finally {
+                isLoading = false
             }
         }
     }
@@ -124,6 +131,26 @@ fun EnvironmentDetailScreen(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 10.dp)
                 )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                if (animalsEnvironment.isNotEmpty()) {
+                    animalsEnvironment.forEach { animal ->
+                        AnimalCard(
+                            imageUrl = animal.image,
+                            name = animal.name,
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
+
+                } else {
+                    Text(
+                        text = "No hay animales en este ambiente",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
 
