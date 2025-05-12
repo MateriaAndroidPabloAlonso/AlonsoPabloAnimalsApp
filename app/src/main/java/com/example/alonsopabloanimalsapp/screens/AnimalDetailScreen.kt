@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.alonsopabloanimalsapp.components.FactItem
 import com.example.alonsopabloanimalsapp.models.Animal
 import com.example.alonsopabloanimalsapp.services.AnimalService
 import kotlinx.coroutines.launch
@@ -123,6 +124,13 @@ fun AnimalDetailScreen(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                Spacer(modifier = Modifier.padding(vertical = 6.dp))
+
+                animal.facts.forEach { fact ->
+                    FactItem(text = fact)
+                    Spacer(modifier = Modifier.padding(vertical = 3.dp))
+                }
             }
         }
     }
