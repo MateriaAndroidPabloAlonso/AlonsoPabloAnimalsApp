@@ -40,6 +40,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.alonsopabloanimalsapp.screens.AnimalDetailScreen
 import com.example.alonsopabloanimalsapp.screens.AnimalListScreen
 import com.example.alonsopabloanimalsapp.screens.EnvironmentDetailScreen
 import com.example.alonsopabloanimalsapp.screens.EnvironmentListScreen
@@ -141,6 +142,21 @@ class MainActivity : ComponentActivity() {
                                 innerPadding = innerPadding, navController = navController
                             )
                         }
+                        composable(
+                            route = "animal-list/{animalId}",
+                            arguments = listOf(
+                                navArgument("animalId") {
+                                    type = NavType.StringType
+                                    nullable = false
+                                }
+                            )
+                        ) {
+                            val animalId = it.arguments?.getString("animalId") ?: ""
+                            AnimalDetailScreen(
+                                innerPadding = innerPadding,
+                                animalId = animalId
+                            )
+                        }
                         composable(route = "environment-list") {
                             EnvironmentListScreen(
                                 innerPadding = innerPadding, navController = navController
@@ -155,7 +171,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         ) {
-                            val environmentId = it.arguments?.getString("environmentId") ?: "Id incorrecto"
+                            val environmentId = it.arguments?.getString("environmentId") ?: ""
                             EnvironmentDetailScreen(
                                 innerPadding = innerPadding,
                                 environmentId = environmentId,
