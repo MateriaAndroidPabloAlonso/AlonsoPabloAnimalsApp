@@ -4,6 +4,7 @@ import com.example.alonsopabloanimalsapp.models.Animal
 import com.example.alonsopabloanimalsapp.models.Environment
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface AnimalService {
 
@@ -12,6 +13,11 @@ interface AnimalService {
 
     @GET("animals/{id}")
     suspend fun getAnimalById( @Path("id") id:String) : Animal
+
+    @GET("animals")
+    suspend fun getAnimalByEnvironmentId(
+        @Query("environmentId") environmentId: String,
+    ) : List<Animal>
 
     @GET("environments")
     suspend fun getEnvironments(): List<Environment>
