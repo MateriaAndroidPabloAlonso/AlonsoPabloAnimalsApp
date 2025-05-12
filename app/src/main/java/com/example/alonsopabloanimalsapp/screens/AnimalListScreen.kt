@@ -148,10 +148,10 @@ fun AnimalListScreen(
                 animals.forEach { animal ->
                     AnimalCard(
                         animal = animal,
-                        onClick = {
-
-                        }
-                    )
+                    ) { animalRegresado ->
+                        Log.i("AnimalEspecifico", animalRegresado.toString())
+                        navController.navigate("animal-list/${animalRegresado.id}")
+                    }
                     Spacer(modifier = Modifier.height(10.dp))
                 }
             }

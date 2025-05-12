@@ -1,5 +1,6 @@
 package com.example.alonsopabloanimalsapp.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,6 +26,9 @@ fun AnimalCard(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(vertical = 8.dp)
+            .clickable {
+                onClick(animal)
+            }
     ) {
         AsyncImage(
             model = animal.image,

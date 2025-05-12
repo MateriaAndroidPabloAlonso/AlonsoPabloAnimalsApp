@@ -138,10 +138,10 @@ fun EnvironmentDetailScreen(
                     animalsEnvironment.forEach { animal ->
                         AnimalCard(
                             animal = animal,
-                            onClick = {
-
-                            }
-                        )
+                        ) { animal ->
+                            Log.i("AnimalEspecifico", animal.toString())
+                            navController.navigate("animal-list/${animal.id}")
+                        }
                         Spacer(modifier = Modifier.height(10.dp))
                     }
 
