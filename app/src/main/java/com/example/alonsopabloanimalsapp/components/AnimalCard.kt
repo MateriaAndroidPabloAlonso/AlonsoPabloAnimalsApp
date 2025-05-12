@@ -14,11 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.example.alonsopabloanimalsapp.models.Animal
 
 @Composable
 fun AnimalCard(
-    imageUrl: String,
-    name: String
+    animal : Animal,
+    onClick : (Animal) -> Unit = {}
 ) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -26,15 +27,15 @@ fun AnimalCard(
             .padding(vertical = 8.dp)
     ) {
         AsyncImage(
-            model = imageUrl,
-            contentDescription = name,
+            model = animal.image,
+            contentDescription = animal.name,
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape),
             contentScale = ContentScale.Crop
         )
         Text(
-            text = name.substringBefore(" "),
+            text = animal.name.substringBefore(" "),
             color = Color.White,
             style = MaterialTheme.typography.titleLarge
         )

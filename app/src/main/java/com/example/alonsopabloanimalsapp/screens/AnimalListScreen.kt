@@ -147,8 +147,10 @@ fun AnimalListScreen(
             ) {
                 animals.forEach { animal ->
                     AnimalCard(
-                        imageUrl = animal.image,
-                        name = animal.name,
+                        animal = animal,
+                        onClick = {
+
+                        }
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                 }
