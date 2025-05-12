@@ -6,14 +6,17 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.NavigationBar
@@ -62,10 +65,10 @@ class MainActivity : ComponentActivity() {
                     contentColor = Color.Transparent,
                     containerColor = Color.Transparent,
                     bottomBar = {
-                        Row (
+                        Box (
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(bottom = 50.dp).padding(horizontal = 40.dp)
+                                .padding(bottom = 20.dp).padding(horizontal = 40.dp)
                                 .background(Color(0xFFAEB044), shape = RoundedCornerShape(40.dp))
 
                         ) {
@@ -184,4 +187,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
